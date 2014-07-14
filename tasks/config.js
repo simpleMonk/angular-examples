@@ -1,0 +1,36 @@
+var config = {
+    path: {
+        spec: "spec",
+        src: {
+            self: "src",
+            js: "src/js/**/*.js",
+            css: "src/css",
+            images: "src/images",
+            fonts: "src/fonts",
+            templates:[ "src/templates/**/*.html"],
+            index:'src/index.html'
+        },
+        vendor: {
+            self: "vendor",
+            js: [
+                "vendor/js/bower-angular-bundle/jquery-2.1.1.min.js",
+                "vendor/js/bower-angular-bundle/angular.min.js",
+                "vendor/js/**/*.js"
+               ],
+            css: "vendor/css",
+            images: "vendor/images",
+            fonts: "vendor/fonts"
+        },
+        development: {
+            self: "development",
+            js: "development/js",
+            css: "development/css",
+            images: "development/images",
+            fonts: "development/fonts",
+            templates: "development/templates",
+            index:'development/index.html'
+        }
+    }
+};
+
+module.exports = config;
