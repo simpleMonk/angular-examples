@@ -4,7 +4,8 @@ var config = require('./config.js'),
     gutil = require('gulp-util'),
     ignore = require('gulp-ignore'),
     clean = require('./util.js').clean,
-    connect = require('gulp-connect');
+    connect = require('gulp-connect'),
+    jshint = require('gulp-jshint');
 
 var vendor_js = config.path.vendor.js;
 var src_js = config.path.src.js;
@@ -34,6 +35,8 @@ gulp.task('vendor-scripts', clean_dev_vendor_js(), function () {
 
 gulp.task('src-scripts', clean_dev_app_js(), function () {
     gulp.src(src_js)
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
         .pipe(concat("app.js"))
         .pipe(gulp.dest(development_js))
         .pipe(connect.reload())

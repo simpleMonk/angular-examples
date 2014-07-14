@@ -13,5 +13,6 @@ npm install --save-dev  gulp-less gulp-autoprefixer;
 npm install --save-dev  gulp-imagemin;
 npm install --save-dev  gulp-livereload gulp-notify;
 npm install --save-dev  gulp-connect,gulp-watch;
-npm install --save-dev run-sequence
+npm install --save-dev run-sequence;
+npm install --save-dev jshint-stylish;
 
