@@ -24,13 +24,16 @@ gulp.task('prepare-dev', function (cb) {
         'prepare-dev-templates',
         cb);
 });
-gulp.task('prepare-dev-js', ['vendor-scripts', 'src-scripts']);
+gulp.task('prepare-dev-js',function(){
+    runSequence('vendor-scripts', 'src-scripts','run-specs');
+});
 gulp.task('prepare-dev-templates', ['copy-index-file', 'copy-templates']);
 
 gulp.task('watch', function () {
     gulp.watch([src.js, vendor.js], ['prepare-dev-js']);
     gulp.watch([src.templates], ['copy-templates']);
     gulp.watch([src.index], ['copy-index-file']);
+    gulp.watch([src.specs], ['run-specs']);
 });
 
 gulp.task('default', function () {

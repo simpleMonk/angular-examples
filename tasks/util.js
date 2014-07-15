@@ -6,7 +6,7 @@ var config = require('./config.js'),
 
 
 function clean(globFolder) {
-    gulp.src(globFolder,{read:false})
+    gulp.src(globFolder)
         .pipe(rimraf({force: true}))
         .on('error', function (err) {
             gutil.log(err);

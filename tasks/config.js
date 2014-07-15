@@ -7,8 +7,9 @@ var config = {
             css: "src/css",
             images: "src/images",
             fonts: "src/fonts",
-            templates:[ "src/templates/**/*.html"],
-            index:'src/index.html'
+            templates: [ "src/templates/**/*.html"],
+            index: 'src/index.html',
+            specs: ["src/js/**/*.js", 'spec/**/*.js']
         },
         vendor: {
             self: "vendor",
@@ -16,7 +17,7 @@ var config = {
                 "vendor/js/bower-angular-bundle/jquery-2.1.1.min.js",
                 "vendor/js/bower-angular-bundle/angular.min.js",
                 "vendor/js/**/*.js"
-               ],
+            ],
             css: "vendor/css",
             images: "vendor/images",
             fonts: "vendor/fonts"
@@ -28,7 +29,8 @@ var config = {
             images: "development/images",
             fonts: "development/fonts",
             templates: "development/templates",
-            index:'development/index.html'
+            index: 'development/index.html',
+            spec: 'development/spec'
         }
     }
 };
