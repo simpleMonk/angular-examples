@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/simpleMonk/angular-examples",
   "devDependencies": {
+    "browserify": "^4.2.1",
     "chai": "^1.9.1",
     "debowerify": "^0.8.1",
     "del": "^0.1.1",

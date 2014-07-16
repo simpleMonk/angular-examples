@@ -9,23 +9,15 @@ var config = require('./config.js'),
     mocha = require('gulp-mocha');
 
 
-var vendorJsFiles = config.path.vendor.js;
-var srcJsFiles = config.path.src.js;
-var developmentJsPath = config.path.development.js;
-var srcSpecJsFiles = config.path.src.specs;
-var developmentSpecJsPath = config.path.development.spec;
+var vendorJsFiles = config.path.vendor.js,
+    srcJsFiles = config.path.src.js,
+    developmentJsPath = config.path.development.js,
+    srcSpecJsFiles = config.path.src.specs,
+    developmentSpecJsPath = config.path.development.spec;
 
-var cleanDevVendorJsFile = function () {
-    clean(developmentJsPath + "/vendor.js");
-};
-
-var cleanDevAppJsFile = function () {
-    clean(developmentJsPath + "/app.js");
-};
-
-var cleanDevSpecJsFile = function () {
-    clean(developmentSpecJsPath + "/spec.js");
-};
+var cleanDevVendorJsFile = clean(developmentJsPath + "/vendor.js"),
+    cleanDevAppJsFile = clean(developmentJsPath + "/app.js"),
+    cleanDevSpecJsFile = clean(developmentSpecJsPath + "/spec.js");
 
 
 gulp.task('copy-vendor-js', cleanDevVendorJsFile(), function () {
