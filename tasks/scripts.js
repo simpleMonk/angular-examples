@@ -67,13 +67,23 @@ gulp.task('run-specs', ['clean-dev-spec-js'], function () {
 
 });
 
-gulp.task('clean-dev-app-js', clean(developmentJsPath + "/app.js"));
-gulp.task('clean-dev-vendor-js', clean(developmentJsPath + "/vendor.js"));
-gulp.task('clean-dev-spec-js', clean(developmentJsPath + "/spec.js"));
+gulp.task('clean-dev-app-js', function () {
+    clean(developmentJsPath + "/app.js");
+});
+gulp.task('clean-dev-vendor-js', function () {
+    clean(developmentJsPath + "/vendor.js");
+});
+gulp.task('clean-dev-spec-js', function () {
+    clean(developmentJsPath + "/spec.js");
+});
 
 
-gulp.task('lint-src-files', lint(srcJsFiles));
-gulp.task('lint-spec-files', lint(srcSpecJsFiles));
+gulp.task('lint-src-files', function () {
+    lint(srcJsFiles);
+});
+gulp.task('lint-spec-files', function () {
+    lint(srcSpecJsFiles);
+});
 
 gulp.task('copy-browserified-src-files', ['clean-dev-app-js', 'lint-src-files'], function () {
     var browserifyCallback = function (files) {
@@ -113,7 +123,7 @@ gulp.task('run-browserified-specs', ['clean-dev-spec-js', 'lint-spec-files'], fu
 });
 
 function browserifyFiles(srcGlob, browserifyCallback) {
-    multiGlob.glob(srcGlob, {}, function (err, files) {
+    multiGlob.glob(srcGlob, function (err, files) {
         files = files.map(prefixFileName);
         browserifyCallback(files);
     });

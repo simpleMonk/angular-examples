@@ -2,7 +2,6 @@ var gulp = require('gulp'),
     config = require('./tasks/config.js'),
     clean = require('./tasks/util.js').clean,
     runSequence = require('run-sequence'),
-    connect = require('gulp-connect'),
     watch = require('gulp-watch');
 
 require('./tasks/templates.js');
@@ -35,7 +34,7 @@ gulp.task('watch', function () {
     gulp.watch([src.js, vendor.js], ['prepare-dev-js']);
     gulp.watch([src.templates], ['copy-templates']);
     gulp.watch([src.index], ['copy-index-file']);
-    gulp.watch([src.specs], ['run-browserified-specs']);
+    gulp.watch([src.specs], ['lint-src-files', 'run-browserified-specs']);
 });
 
 gulp.task('default', function () {

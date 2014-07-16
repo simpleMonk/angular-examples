@@ -7,7 +7,7 @@ describe('Simple module:Person', function () {
         expect(person.name).to.equal('senthil');
     });
 
-    it("should have a person prototype getFullName", function () {
+    iit("should have a person prototype getFullName", function () {
         var person = new Person({firstName:'Senthil',lastName:'Kumar'});
         expect(person.getFullName()).to.equal('Senthil Kumar');
     });
