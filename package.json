@@ -24,6 +24,7 @@
     "chai": "^1.9.1",
     "debowerify": "^0.8.1",
     "del": "^0.1.1",
+    "glob": "^4.0.4",
     "gulp": "^3.8.6",
     "gulp-changed": "^0.4.0",
     "gulp-concat": "^2.3.3",
@@ -36,13 +37,16 @@
     "gulp-notify": "^1.4.0",
     "gulp-rename": "^1.2.0",
     "gulp-rimraf": "^0.1.0",
+    "gulp-streamify": "0.0.5",
     "gulp-uglify": "^0.3.1",
     "gulp-util": "^2.2.20",
     "gulp-watch": "^0.6.8",
     "jshint-stylish": "^0.4.0",
     "mocha": "^1.20.1",
+    "multi-glob": "^0.4.0",
     "run-sequence": "^0.3.6",
     "streamqueue": "^0.1.1",
-    "testem": "^0.6.17"
+    "testem": "^0.6.17",
+    "vinyl-source-stream": "^0.1.1"
   }
 }

@@ -1,6 +1,4 @@
-if (typeof process !== 'undefined' && process.title === 'node') {
-    setupForNode();
-} else if (typeof process === "object" && process.title === "gulp") {
+if (typeof process !== 'undefined') {
     setupForNode();
 } else {
     setupForBrowser();

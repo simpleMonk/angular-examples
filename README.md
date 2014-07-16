@@ -17,4 +17,7 @@ npm install --save-dev  run-sequence;
 npm install --save-dev  gulp-mocha;
 npm install --save-dev  chai;
 npm install --save-dev  streamqueue;
-npm install --save-dev mocha testem;
+npm install --save-dev  mocha testem;
+npm install --save-dev  browserify vinyl-source-stream;
+npm install --save-dev  glob multi-glob;
+npm install --save-dev  gulp-streamify;

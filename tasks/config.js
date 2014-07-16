@@ -9,7 +9,7 @@ var config = {
             fonts: "src/fonts",
             templates: [ "src/templates/**/*.html"],
             index: 'src/index.html',
-            specs: ["src/js/**/*.js", 'spec/**/*.js']
+            specs: [ 'spec/**/*.js']
         },
         vendor: {
             self: "vendor",
