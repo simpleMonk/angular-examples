@@ -9,29 +9,30 @@ var config = require('./config.js'),
     mocha = require('gulp-mocha');
 
 
-var vendor_js = config.path.vendor.js;
-var src_js = config.path.src.js;
-var development_js = config.path.development.js;
-var src_spec_js = config.path.src.specs;
-var development_spec_js = config.path.development.spec;
+var vendorJsFiles = config.path.vendor.js;
+var srcJsFiles = config.path.src.js;
+var developmentJsPath = config.path.development.js;
+var srcSpecJsFiles = config.path.src.specs;
+var developmentSpecJsPath = config.path.development.spec;
 
-var clean_dev_vendor_js = function () {
-    clean(development_js + "/vendor.js");
+var cleanDevVendorJsFile = function () {
+    clean(developmentJsPath + "/vendor.js");
 };
 
-var clean_dev_app_js = function () {
-    clean(development_js + "/app.js");
+var cleanDevAppJsFile = function () {
+    clean(developmentJsPath + "/app.js");
 };
 
-var clean_dev_spec_js = function () {
-    clean(development_spec_js + "/spec.js");
+var cleanDevSpecJsFile = function () {
+    clean(developmentSpecJsPath + "/spec.js");
 };
 
-gulp.task('vendor-scripts', clean_dev_vendor_js(), function () {
-    gulp.src(vendor_js)
+
+gulp.task('copy-vendor-js', cleanDevVendorJsFile(), function () {
+    gulp.src(vendorJsFiles)
         .pipe(ignore(/rx.angular.min.js/))
         .pipe(concat("vendor.js"))
-        .pipe(gulp.dest(development_js))
+        .pipe(gulp.dest(developmentJsPath))
         .pipe(connect.reload())
         .on('end', function () {
             gutil.log('successfully copied vendor scripts')
@@ -41,12 +42,12 @@ gulp.task('vendor-scripts', clean_dev_vendor_js(), function () {
         });
 });
 
-gulp.task('src-scripts', clean_dev_app_js(), function () {
-    gulp.src(src_js)
+gulp.task('copy-src-js', cleanDevAppJsFile(), function () {
+    gulp.src(srcJsFiles)
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
         .pipe(concat("app.js"))
-        .pipe(gulp.dest(development_js))
+        .pipe(gulp.dest(developmentJsPath))
         .pipe(connect.reload())
         .on('end', function () {
             gutil.log('successfully copied source scripts');
@@ -55,12 +56,14 @@ gulp.task('src-scripts', clean_dev_app_js(), function () {
             gutil.log(err);
         });
 });
-gulp.task('run-specs', clean_dev_spec_js(), function () {
-    gulp.src(src_spec_js)
+
+
+gulp.task('run-specs', cleanDevSpecJsFile(), function () {
+    gulp.src(srcSpecJsFiles)
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
         .pipe(concat('spec.js'))
-        .pipe(gulp.dest(development_spec_js))
+        .pipe(gulp.dest(developmentSpecJsPath))
         .pipe(mocha({
             reporter: 'spec',
             ui: 'bdd'
@@ -72,5 +75,7 @@ gulp.task('run-specs', clean_dev_spec_js(), function () {
         });
 
 });
+
+
 
 

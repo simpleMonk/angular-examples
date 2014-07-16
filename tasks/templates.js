@@ -1,14 +1,15 @@
 var config = require('./config.js'),
-    gulp = require('gulp'),
-    gutil = require('gulp-util'),
+    gulp = require('gulp'), et
+gutil = require('gulp-util'),
     clean = require('./util.js').clean,
     connect = require('gulp-connect'),
     src = config.path.src,
     dev = config.path.development;
 
-var clean_templates = clean(dev.templates);
+var removeIndexFiles = clean(dev.index),
+    cleanHtmlTemplates = clean(dev.templates);
 
-gulp.task("copy-templates", clean_templates, function () {
+gulp.task("copy-templates", cleanHtmlTemplates, function () {
     gulp.src(src.templates)
         .pipe(gulp.dest(dev.templates))
         .pipe(connect.reload())
@@ -20,9 +21,7 @@ gulp.task("copy-templates", clean_templates, function () {
         });
 });
 
-var remove_index_file = clean(dev.index);
-
-gulp.task("copy-index-file", remove_index_file, function () {
+gulp.task("copy-index-file", removeIndexFiles, function () {
     gulp.src(src.index)
         .pipe(gulp.dest(dev.self))
         .pipe(connect.reload())

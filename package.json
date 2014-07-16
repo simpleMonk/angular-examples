@@ -43,8 +43,5 @@
     "run-sequence": "^0.3.6",
     "streamqueue": "^0.1.1",
     "testem": "^0.6.17"
-  },
-  "dependencies": {
-    "streamqueue": "^0.1.1"
   }
 }

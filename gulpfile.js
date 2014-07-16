@@ -24,9 +24,11 @@ gulp.task('prepare-dev', function (cb) {
         'prepare-dev-templates',
         cb);
 });
+
 gulp.task('prepare-dev-js',function(){
-    runSequence('vendor-scripts', 'src-scripts','run-specs');
+    runSequence('copy-vendor-js', 'copy-src-js','run-specs');
 });
+
 gulp.task('prepare-dev-templates', ['copy-index-file', 'copy-templates']);
 
 gulp.task('watch', function () {
@@ -37,7 +39,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', function () {
-    runSequence('prepare-dev',  'watch','webserver-dev');
+    runSequence('prepare-dev',  'watch','run-dev-server');
 });
 
 

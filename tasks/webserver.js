@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     watch = require('gulp-watch');
 
 
-gulp.task('webserver-dev', function () {
+gulp.task('run-dev-server', function () {
     connect.server({
         root: [config.path.development.self],
         port: 8000,
