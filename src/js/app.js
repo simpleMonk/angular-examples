@@ -1,7 +1,4 @@
-/**
- * Created by lpsentilkumaran on 14/7/14.
- */
+var Person = require('./person/person.js');
 
-function Person(person){
-  this.name = person.name;
-}
+var senthil = new Person({name: 'senthil'});
+console.log(senthil);

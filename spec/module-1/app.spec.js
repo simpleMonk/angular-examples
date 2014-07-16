@@ -1,8 +1,15 @@
-describe('Simple module:Person',function(){
+var Person = require("../../src/js/person/person.js");
 
-  it("should have a person constructor",function(){
-    var person = new Person({name:'senthil'});
-      expect(person.name).to.equal('senthil');
-  });
+describe('Simple module:Person', function () {
+
+    it("should have a person constructor", function () {
+        var person = new Person({name: 'senthil'});
+        expect(person.name).to.equal('senthil');
+    });
+
+    iit("should have a person prototype getFullName", function () {
+        var person = new Person({firstName:'Senthil',lastName:'Kumar'});
+        expect(person.getFullName()).to.equal('Senthil Kumar');
+    });
 
 });

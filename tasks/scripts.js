@@ -6,29 +6,20 @@ var config = require('./config.js'),
     clean = require('./util.js').clean,
     connect = require('gulp-connect'),
     jshint = require('gulp-jshint'),
-    mocha = require('gulp-mocha');
+    mocha = require('gulp-mocha'),
+    browserify = require('browserify'),
+    source = require('vinyl-source-stream'),
+    glob = require('glob'),
+    multiGlob = require('multi-glob');
 
 
-var vendorJsFiles = config.path.vendor.js;
-var srcJsFiles = config.path.src.js;
-var developmentJsPath = config.path.development.js;
-var srcSpecJsFiles = config.path.src.specs;
-var developmentSpecJsPath = config.path.development.spec;
+var vendorJsFiles = config.path.vendor.js,
+    srcJsFiles = config.path.src.js,
+    developmentJsPath = config.path.development.js,
+    srcSpecJsFiles = config.path.src.specs,
+    developmentSpecJsPath = config.path.development.spec;
 
-var cleanDevVendorJsFile = function () {
-    clean(developmentJsPath + "/vendor.js");
-};
-
-var cleanDevAppJsFile = function () {
-    clean(developmentJsPath + "/app.js");
-};
-
-var cleanDevSpecJsFile = function () {
-    clean(developmentSpecJsPath + "/spec.js");
-};
-
-
-gulp.task('copy-vendor-js', cleanDevVendorJsFile(), function () {
+gulp.task('copy-vendor-js', ['clean-dev-vendor-js'], function () {
     gulp.src(vendorJsFiles)
         .pipe(ignore(/rx.angular.min.js/))
         .pipe(concat("vendor.js"))
@@ -42,7 +33,7 @@ gulp.task('copy-vendor-js', cleanDevVendorJsFile(), function () {
         });
 });
 
-gulp.task('copy-src-js', cleanDevAppJsFile(), function () {
+gulp.task('copy-src-js', ['clean-dev-app-js'], function () {
     gulp.src(srcJsFiles)
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
@@ -58,7 +49,7 @@ gulp.task('copy-src-js', cleanDevAppJsFile(), function () {
 });
 
 
-gulp.task('run-specs', cleanDevSpecJsFile(), function () {
+gulp.task('run-specs', ['clean-dev-spec-js'], function () {
     gulp.src(srcSpecJsFiles)
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
@@ -76,6 +67,77 @@ gulp.task('run-specs', cleanDevSpecJsFile(), function () {
 
 });
 
+gulp.task('clean-dev-app-js', function () {
+    clean(developmentJsPath + "/app.js");
+});
+gulp.task('clean-dev-vendor-js', function () {
+    clean(developmentJsPath + "/vendor.js");
+});
+gulp.task('clean-dev-spec-js', function () {
+    clean(developmentJsPath + "/spec.js");
+});
+
+
+gulp.task('lint-src-files', function () {
+    lint(srcJsFiles);
+});
+gulp.task('lint-spec-files', function () {
+    lint(srcSpecJsFiles);
+});
+
+gulp.task('copy-browserified-src-files', ['clean-dev-app-js', 'lint-src-files'], function () {
+    var browserifyCallback = function (files) {
+        browserify({entries: files})
+            .bundle()
+            .pipe(source("app.js"))
+            .pipe(gulp.dest(developmentJsPath))
+            .on('end', function () {
+                gutil.log('successfully copied source scripts');
+            })
+            .on('error', function (err) {
+                gutil.log(err);
+            });
+    };
+
+    browserifyFiles(srcJsFiles, browserifyCallback);
+});
+
+gulp.task('run-browserified-specs', ['clean-dev-spec-js', 'lint-spec-files'], function () {
+    function browserifySpecCallback(files) {
+        browserify({entries: files})
+            .bundle()
+            .pipe(source("spec.js"))
+            .pipe(gulp.dest(developmentSpecJsPath))
+            .pipe(mocha({
+                reporter: 'spec',
+                ui: 'bdd'
+            }))
+            .on('error', function (err) {
+                gutil.log('----------------------------');
+                gutil.log(err.message);
+                gutil.log('----------------------------');
+            });
+    };
+
+    browserifyFiles(srcSpecJsFiles, browserifySpecCallback);
+});
+
+function browserifyFiles(srcGlob, browserifyCallback) {
+    multiGlob.glob(srcGlob, function (err, files) {
+        files = files.map(prefixFileName);
+        browserifyCallback(files);
+    });
+};
+
+function prefixFileName(fileName) {
+    return "./" + fileName;
+}
+
+function lint(files) {
+    gulp.src(files)
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'));
+}
 
 
 
