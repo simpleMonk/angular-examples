@@ -9,13 +9,7 @@ var config = require('./config.js'),
     mocha = require('gulp-mocha'),
     browserify = require('browserify'),
     source = require('vinyl-source-stream'),
-    glob = require('glob'),
-    multiGlob = require('multi-glob'),
-    browserifyIstanbul = require('browserify-istanbul'),
-    blanket = require('gulp-blanket-mocha'),
-    istanbul = require('gulp-istanbul'),
-    istanbulify = require('istanbulify'),
-    coverify = require('coverify');
+    multiGlob = require('multi-glob');
 
 var vendorJsFiles = config.path.vendor.js,
     srcJsFiles = config.path.src.js,

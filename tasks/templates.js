@@ -1,6 +1,6 @@
 var config = require('./config.js'),
-    gulp = require('gulp'), et
-gutil = require('gulp-util'),
+    gulp = require('gulp'),
+    gutil = require('gulp-util'),
     clean = require('./util.js').clean,
     connect = require('gulp-connect'),
     src = config.path.src,
