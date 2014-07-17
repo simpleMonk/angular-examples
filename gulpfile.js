@@ -7,6 +7,7 @@ var gulp = require('gulp'),
 require('./tasks/templates.js');
 require('./tasks/webserver.js');
 require('./tasks/scripts.js');
+require('./tasks/styles.js');
 
 var src = config.path.src;
 var vendor = config.path.vendor;
@@ -19,7 +20,9 @@ gulp.task('watch', function () {
     gulp.watch([src.js, vendor.js], ['prepare-dev-js']);
     gulp.watch([src.templates], ['copy-templates']);
     gulp.watch([src.index], ['copy-index-file']);
+    gulp.watch([src.css], [ 'copy-less-css']);
     gulp.watch([src.specs], ['lint-src-files', 'run-browserified-specs']);
+
 });
 
 gulp.task('clean-dev', function () {
@@ -30,6 +33,7 @@ gulp.task('prepare-dev', function (cb) {
     runSequence('clean-dev',
         'prepare-dev-js',
         'prepare-dev-templates',
+        'copy-less-css',
         cb);
 });
 

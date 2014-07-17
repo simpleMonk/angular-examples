@@ -4,7 +4,7 @@ var config = {
         src: {
             self: "src",
             js: "src/js/**/*.js",
-            css: "src/css",
+            css: "src/css/**/*.less",
             images: "src/images",
             fonts: "src/fonts",
             templates: [ "src/templates/**/*.html"],

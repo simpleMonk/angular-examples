@@ -23,3 +23,5 @@ Gulp modules
     npm install --save-dev gulp-blanket-mocha;
     npm install --save-dev istanbulify;
     npm install --save-dev coverify;
+    npm install --save-dev gulp-less gulp-autoprefixer;
+    npm install --save-dev gulp-concat-css gulp-recess;
