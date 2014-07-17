@@ -1,5 +1,3 @@
-angular-examples
-================
 
 Angular playground
 ------------------------
@@ -21,3 +19,7 @@ Gulp modules
     npm install --save-dev  browserify vinyl-source-stream;
     npm install --save-dev  glob multi-glob;
     npm install --save-dev  gulp-streamify;
+    npm install --save-dev  gulp-istanbul,browserify-istanbul;
+    npm install --save-dev gulp-blanket-mocha;
+    npm install --save-dev istanbulify;
+    npm install --save-dev coverify;
