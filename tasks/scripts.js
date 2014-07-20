@@ -19,7 +19,6 @@ var vendorJsFiles = config.path.vendor.js,
 
 gulp.task('copy-vendor-js', ['clean-dev-vendor-js'], function () {
     gulp.src(vendorJsFiles)
-        .pipe(ignore(/rx.angular.min.js/))
         .pipe(concat("vendor.js"))
         .pipe(gulp.dest(developmentJsPath))
         .pipe(connect.reload())

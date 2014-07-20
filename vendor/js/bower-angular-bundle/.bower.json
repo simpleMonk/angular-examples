@@ -1,9 +1,9 @@
 {
   "name": "bower-angular-bundle",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/simpleMonk/bower-angular-bundle",
   "authors": [
-    "SimpleMonk <simplemonk@gmail.com>"
+    "SimpleMonk <simplemonk08@gmail.com>"
   ],
   "description": "Custom bower package for Angular and frequently used libraries",
   "keywords": [
@@ -21,14 +21,13 @@
     "test",
     "tests"
   ],
-  "_release": "0.0.1",
+  "_release": "0.0.2",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.1",
-    "commit": "6fb8a076712805695a4312057594b05f9e2982e3"
+    "tag": "0.0.2",
+    "commit": "7fbf043d9ff87d6f8c2400fbb5cf252dbe9e0694"
   },
   "_source": "git://github.com/simplemonk/bower-angular-bundle.git",
   "_target": "~0.0.1",
-  "_originalSource": "simplemonk/bower-angular-bundle",
-  "_direct": true
+  "_originalSource": "simplemonk/bower-angular-bundle"
 }

@@ -34,7 +34,6 @@ gulp.task('build-js', ['build-vendor-js', 'build-src-js', 'run-specs-dist']);
 
 gulp.task('build-vendor-js', function () {
     gulp.src(vendorJsFiles)
-        .pipe(ignore(/rx.angular.min.js/))
         .pipe(concat("vendor.js"))
         .pipe(uglify())
         .pipe(gulp.dest(distJsPath))
