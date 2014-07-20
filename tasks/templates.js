@@ -6,7 +6,7 @@ var config = require('./config.js'),
     src = config.path.src,
     dev = config.path.development;
 
-var removeIndexFiles = clean(dev.index),
+var removeIndexFile = clean(dev.index),
     cleanHtmlTemplates = clean(dev.templates);
 
 gulp.task("copy-templates", cleanHtmlTemplates, function () {
@@ -21,7 +21,7 @@ gulp.task("copy-templates", cleanHtmlTemplates, function () {
         });
 });
 
-gulp.task("copy-index-file", removeIndexFiles, function () {
+gulp.task("copy-index-file", removeIndexFile, function () {
     gulp.src(src.index)
         .pipe(gulp.dest(dev.self))
         .pipe(connect.reload())

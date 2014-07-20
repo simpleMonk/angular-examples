@@ -31,6 +31,16 @@ var config = {
             templates: "development/templates",
             index: 'development/index.html',
             spec: 'development/spec'
+        },
+        dist: {
+            self: "dist",
+            js: "dist/js",
+            css: "dist/css",
+            images: "dist/images",
+            fonts: "dist/fonts",
+            templates: "dist/templates",
+            index: 'dist/index.html',
+            spec: 'dist/spec'
         }
     }
 };

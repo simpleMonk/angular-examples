@@ -8,6 +8,7 @@ require('./tasks/templates.js');
 require('./tasks/webserver.js');
 require('./tasks/scripts.js');
 require('./tasks/styles.js');
+require('./tasks/dist.js');
 
 var src = config.path.src;
 var vendor = config.path.vendor;
@@ -29,6 +30,11 @@ gulp.task('clean-dev', function () {
     clean(config.path.development.self + "/*");
 });
 
+gulp.task('clean-dist', function () {
+    clean(config.path.dist.self + "/*");
+});
+
+
 gulp.task('prepare-dev', function (cb) {
     runSequence('clean-dev',
         'prepare-dev-js',
@@ -43,6 +49,9 @@ gulp.task('prepare-dev-js', function () {
 
 gulp.task('prepare-dev-templates', ['copy-index-file', 'copy-templates']);
 
+gulp.task('build', function () {
+    runSequence('clean-dist', ['build-js', 'build-css', 'build-templates'], 'run-dist-server');
+});
 
 
 
