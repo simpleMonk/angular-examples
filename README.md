@@ -7,6 +7,7 @@ Gulp modules
 
     npm install --save-dev  gulp gulp-rename gulp-util del gulp-changed gulp-watch gulp-ignore gulp-rimraf;
     npm install --save-dev  gulp-concat gulp-uglify gulp-jshint jshint-stylish;
+    npm install --save-dev gulp-minify-css;
     npm install --save-dev  gulp-less gulp-autoprefixer;
     npm install --save-dev  gulp-imagemin;
     npm install --save-dev  gulp-livereload gulp-notify;
