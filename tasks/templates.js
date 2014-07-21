@@ -26,7 +26,6 @@ gulp.task("copy-index-file", ['remove-index-file'], function () {
         .on('error', onError);
 });
 
-
 gulp.task('clean-templates', function () {
     var templatesPath = "/" + dev.templates;
     clean(templatesPath);

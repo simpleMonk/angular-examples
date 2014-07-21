@@ -3,7 +3,6 @@ var config = require('./config.js'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     gutil = require('gulp-util'),
-    ignore = require('gulp-ignore'),
     clean = require('./util.js').clean,
     connect = require('gulp-connect'),
     jshint = require('gulp-jshint'),
@@ -78,7 +77,6 @@ gulp.task('build-css', function () {
 
 gulp.task('build-templates', ['copy-templates-dist', 'copy-index-file-dist'])
 
-
 gulp.task("copy-templates-dist", function () {
     gulp.src(srcTemplates)
         .pipe(gulp.dest(distTemplatesPath))
@@ -96,7 +94,6 @@ gulp.task("copy-index-file-dist", function () {
         })
         .on('error', onError);
 });
-
 
 gulp.task('copy-specs-dist', ['lint-spec-files-dist'], function () {
     function browserifySpecCallback(files) {
@@ -117,7 +114,6 @@ gulp.task('run-dist-server', function () {
     });
 });
 
-
 gulp.task('lint-spec-files-dist', function () {
     lint("spec/**/*.js");
 });
@@ -135,7 +131,6 @@ gulp.task('lint-src-files-dist', function () {
         });
 
 });
-
 
 function browserifyFiles(srcGlob, browserifyCallback) {
     multiGlob.glob(srcGlob, function (err, files) {

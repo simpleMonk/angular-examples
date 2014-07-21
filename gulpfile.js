@@ -23,7 +23,6 @@ gulp.task('watch', function () {
     gulp.watch([src.index], ['copy-index-file']);
     gulp.watch([src.css], [ 'copy-less-css']);
     gulp.watch([src.specs], ['lint-src-files', 'copy-browserified-specs']);
-
 });
 
 gulp.task('clean-dev', function () {
@@ -33,7 +32,6 @@ gulp.task('clean-dev', function () {
 gulp.task('clean-dist', function () {
     clean(config.path.dist.self + "/*");
 });
-
 
 gulp.task('prepare-dev', function (cb) {
     runSequence('clean-dev',

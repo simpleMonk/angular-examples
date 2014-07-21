@@ -1,7 +1,6 @@
 var gulp = require('gulp'),
     config = require('./config.js'),
     gutil = require('gulp-util'),
-    ignore = require('gulp-ignore'),
     clean = require('./util.js').clean,
     less = require('gulp-less'),
     autoprefixer = require('gulp-autoprefixer'),
@@ -9,10 +8,8 @@ var gulp = require('gulp'),
     recess = require('gulp-recess'),
     notify = require('gulp-notify');
 
-
 var srcStyleSheetFiles = config.path.src.css,
     devStyleSheetPath = config.path.development.css;
-
 
 gulp.task('clean-stylesheet', function () {
     clean(devStyleSheetPath + "/*");
@@ -30,7 +27,6 @@ gulp.task('copy-less-css', ['clean-stylesheet', 'lint-less-files'], function () 
         .on('error', onError);
 });
 
-
 gulp.task('lint-less-files', function () {
     gulp.src(srcStyleSheetFiles)
         .pipe(recess())
@@ -38,7 +34,6 @@ gulp.task('lint-less-files', function () {
             gutil.log(err.message);
         });
 });
-
 
 function onError(err) {
     gutil.log('----------------------------');

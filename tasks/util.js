@@ -4,7 +4,6 @@ var config = require('./config.js'),
     gutil = require('gulp-util')
     del = require('del');
 
-
 function clean(globFolder) {
     gulp.src(globFolder)
         .pipe(rimraf({force: true}))
