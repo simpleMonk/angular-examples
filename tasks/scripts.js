@@ -26,9 +26,7 @@ gulp.task('copy-vendor-js', ['clean-dev-vendor-js'], function () {
         .on('end', function () {
             gutil.log('successfully copied vendor scripts')
         })
-        .on('error', function (err) {
-            gutil.log(err);
-        });
+        .on('error', onError);
 });
 
 gulp.task('copy-src-js', ['clean-dev-app-js'], function () {
@@ -41,9 +39,7 @@ gulp.task('copy-src-js', ['clean-dev-app-js'], function () {
         .on('end', function () {
             gutil.log('successfully copied source scripts');
         })
-        .on('error', function (err) {
-            gutil.log(err);
-        });
+        .on('error', onError);
 });
 
 
@@ -57,11 +53,7 @@ gulp.task('run-specs', ['clean-dev-spec-js'], function () {
             reporter: 'spec',
             ui: 'bdd'
         }))
-        .on('error', function (err) {
-            gutil.log('----------------------------');
-            gutil.log(err.message);
-            gutil.log('----------------------------');
-        });
+        .on('error', onError);
 
 });
 
@@ -75,9 +67,7 @@ gulp.task('copy-browserified-src-files', ['clean-dev-app-js', 'lint-src-files'],
             .on('end', function () {
                 gutil.log('successfully copied source scripts');
             })
-            .on('error', function (err) {
-                gutil.log(err);
-            });
+            .on('error', onError);
     };
 
     browserifyFiles(srcJsFiles, browserifyCallback);
@@ -89,11 +79,7 @@ gulp.task('copy-browserified-specs', ['clean-dev-spec-js', 'lint-spec-files'], f
             .bundle()
             .pipe(source("spec.js"))
             .pipe(gulp.dest(developmentSpecJsPath))
-            .on('error', function (err) {
-                gutil.log('----------------------------');
-                gutil.log(err.message);
-                gutil.log('----------------------------');
-            });
+            .on('error', onError);
     };
 
     browserifyFiles(srcSpecJsFiles, browserifySpecCallback);
@@ -134,6 +120,12 @@ function lint(files) {
     gulp.src(files)
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
+}
+
+function onError(err) {
+    gutil.log('----------------------------');
+    gutil.log(err.message);
+    gutil.log('----------------------------');
 }
 
 

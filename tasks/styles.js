@@ -27,9 +27,7 @@ gulp.task('copy-less-css', ['clean-stylesheet', 'lint-less-files'], function () 
         .on('end', function () {
             gutil.log('successfully copied less files')
         })
-        .on('error', function (err) {
-            gutil.log(err.message);
-        });
+        .on('error', onError);
 });
 
 
@@ -40,3 +38,10 @@ gulp.task('lint-less-files', function () {
             gutil.log(err.message);
         });
 });
+
+
+function onError(err) {
+    gutil.log('----------------------------');
+    gutil.log(err.message);
+    gutil.log('----------------------------');
+}

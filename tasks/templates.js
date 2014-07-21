@@ -13,9 +13,7 @@ gulp.task("copy-templates", ['clean-templates'], function () {
         .on('end', function () {
             gutil.log('successfully copied html files')
         })
-        .on('error', function (err) {
-            gutil.log(err);
-        });
+        .on('error', onError);
 });
 
 gulp.task("copy-index-file", ['remove-index-file'], function () {
@@ -25,17 +23,21 @@ gulp.task("copy-index-file", ['remove-index-file'], function () {
         .on('end', function () {
             gutil.log('successfully copied index file')
         })
-        .on('error', function (err) {
-            gutil.log(err);
-        });
+        .on('error', onError);
 });
 
 
 gulp.task('clean-templates', function () {
-    var templatesPath ="/" + dev.templates;
+    var templatesPath = "/" + dev.templates;
     clean(templatesPath);
 });
 
 gulp.task('remove-index-file', function () {
     clean(dev.index);
-})
+});
+
+function onError(err) {
+    gutil.log('----------------------------');
+    gutil.log(err.message);
+    gutil.log('----------------------------');
+}

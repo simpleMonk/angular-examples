@@ -44,7 +44,7 @@ gulp.task('build-vendor-js', function () {
         });
 });
 
-gulp.task('build-src-js', function () {
+gulp.task('build-src-js', ['lint-src-files-dist'], function () {
     var browserifyCallback = function (files) {
         browserify({entries: files})
             .transform('browserify-ngannotate')
@@ -73,9 +73,7 @@ gulp.task('build-css', function () {
         .on('end', function () {
             gutil.log('successfully copied less files')
         })
-        .on('error', function (err) {
-            gutil.log(err.message);
-        });
+        .on('error', onError);
 });
 
 gulp.task('build-templates', ['copy-templates-dist', 'copy-index-file-dist'])
@@ -87,9 +85,7 @@ gulp.task("copy-templates-dist", function () {
         .on('end', function () {
             gutil.log('successfully copied html files')
         })
-        .on('error', function (err) {
-            gutil.log(err);
-        });
+        .on('error', onError);
 });
 
 gulp.task("copy-index-file-dist", function () {
@@ -98,9 +94,7 @@ gulp.task("copy-index-file-dist", function () {
         .on('end', function () {
             gutil.log('successfully copied index file')
         })
-        .on('error', function (err) {
-            gutil.log(err);
-        });
+        .on('error', onError);
 });
 
 
@@ -110,11 +104,7 @@ gulp.task('copy-specs-dist', ['lint-spec-files-dist'], function () {
             .bundle()
             .pipe(source("spec.js"))
             .pipe(gulp.dest(distSpecPath))
-            .on('error', function (err) {
-                gutil.log('----------------------------');
-                gutil.log(err.message);
-                gutil.log('----------------------------');
-            });
+            .on('error', onError);
     };
 
     browserifyFiles(srcSpecJsFiles, browserifySpecCallback);
@@ -129,7 +119,21 @@ gulp.task('run-dist-server', function () {
 
 
 gulp.task('lint-spec-files-dist', function () {
-    lint("/spec/**/*.js");
+    lint("spec/**/*.js");
+});
+
+gulp.task('lint-src-files-dist', function () {
+    gulp.src(srcJsFiles)
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'))
+        .on('error', function (err) {
+            gutil.log('----------------------------');
+            gutil.log("Failed to build js files.");
+            gutil.log('----------------------------');
+            process.exit(1);
+        });
+
 });
 
 
@@ -148,4 +152,10 @@ function lint(files) {
     gulp.src(files)
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
+}
+
+function onError(err) {
+    gutil.log('----------------------------');
+    gutil.log(err.message);
+    gutil.log('----------------------------');
 }
