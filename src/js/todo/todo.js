@@ -1,4 +1,4 @@
+var todoController = require('./controllers/todo-controller.js');
+
 angular.module('todo', [])
-    .controller('TodoController', function ($scope) {
-        $scope.message = "Hello";
-    });
+    .controller('TodoController', todoController);
