@@ -28,6 +28,7 @@
     "commit": "7fbf043d9ff87d6f8c2400fbb5cf252dbe9e0694"
   },
   "_source": "git://github.com/simplemonk/bower-angular-bundle.git",
-  "_target": "~0.0.1",
-  "_originalSource": "simplemonk/bower-angular-bundle"
+  "_target": "~0.0.2",
+  "_originalSource": "simplemonk/bower-angular-bundle",
+  "_direct": true
 }

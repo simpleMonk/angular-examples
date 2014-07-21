@@ -116,7 +116,9 @@ gulp.task('lint-src-files', function () {
     lint(srcJsFiles);
 });
 gulp.task('lint-spec-files', function () {
-    lint(srcSpecJsFiles);
+    gulp.src('spec/**/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'));
 });
 
 

@@ -6,10 +6,7 @@ var config = require('./config.js'),
     src = config.path.src,
     dev = config.path.development;
 
-var removeIndexFile = clean(dev.index),
-    cleanHtmlTemplates = clean(dev.templates);
-
-gulp.task("copy-templates", cleanHtmlTemplates, function () {
+gulp.task("copy-templates", ['clean-templates'], function () {
     gulp.src(src.templates)
         .pipe(gulp.dest(dev.templates))
         .pipe(connect.reload())
@@ -21,7 +18,7 @@ gulp.task("copy-templates", cleanHtmlTemplates, function () {
         });
 });
 
-gulp.task("copy-index-file", removeIndexFile, function () {
+gulp.task("copy-index-file", ['remove-index-file'], function () {
     gulp.src(src.index)
         .pipe(gulp.dest(dev.self))
         .pipe(connect.reload())
@@ -33,3 +30,11 @@ gulp.task("copy-index-file", removeIndexFile, function () {
         });
 });
 
+
+gulp.task('clean-templates',function(){
+    clean(dev.templates);
+});
+
+gulp.task('remove-index-file',function(){
+    clean(dev.index);
+})

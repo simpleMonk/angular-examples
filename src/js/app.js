@@ -1,4 +1,11 @@
-var Person = require('./person/person.js');
+angular.module('app', ['ngResource', 'ngRoute', 'todo']).run(function ($rootScope) {
+    // adds some basic utilities to the $rootScope for debugging purposes
+    $rootScope.log = function (thing) {
+        console.log(thing);
+    };
 
-var senthil = new Person({name: 'senthil', firstName: 'Senthil', lastName: 'Kumar'});
-console.log(senthil);
+    $rootScope.alert = function (thing) {
+        alert(thing);
+    };
+});
+
