@@ -30,12 +30,11 @@ var srcJsFiles = config.path.src.js,
     distIndexFilePath = config.path.dist.self,
     distSpecPath = config.path.dist.spec;
 
-gulp.task('build-js', ['build-vendor-js', 'build-src-js', 'run-specs-dist']);
+gulp.task('build-js', ['build-vendor-js', 'build-src-js', 'copy-specs-dist']);
 
 gulp.task('build-vendor-js', function () {
     gulp.src(vendorJsFiles)
         .pipe(concat("vendor.js"))
-        .pipe(uglify())
         .pipe(gulp.dest(distJsPath))
         .on('end', function () {
             gutil.log('successfully copied vendor scripts')
@@ -48,6 +47,7 @@ gulp.task('build-vendor-js', function () {
 gulp.task('build-src-js', function () {
     var browserifyCallback = function (files) {
         browserify({entries: files})
+            .transform('browserify-ngannotate')
             .bundle()
             .pipe(source("app.js"))
             .pipe(streamify(uglify()))
@@ -96,7 +96,7 @@ gulp.task("copy-index-file-dist", function () {
     gulp.src(srcIndexFile)
         .pipe(gulp.dest(distIndexFilePath))
         .on('end', function () {
-            gutil.log('successfully copied html files')
+            gutil.log('successfully copied index file')
         })
         .on('error', function (err) {
             gutil.log(err);
@@ -104,16 +104,12 @@ gulp.task("copy-index-file-dist", function () {
 });
 
 
-gulp.task('run-specs-dist', ['lint-spec-files'], function () {
+gulp.task('copy-specs-dist', ['lint-spec-files-dist'], function () {
     function browserifySpecCallback(files) {
         browserify({entries: files})
             .bundle()
             .pipe(source("spec.js"))
             .pipe(gulp.dest(distSpecPath))
-            .pipe(mocha({
-                reporter: 'spec',
-                ui: 'bdd'
-            }))
             .on('error', function (err) {
                 gutil.log('----------------------------');
                 gutil.log(err.message);
@@ -132,8 +128,8 @@ gulp.task('run-dist-server', function () {
 });
 
 
-gulp.task('lint-spec-files', function () {
-    lint(srcSpecJsFiles);
+gulp.task('lint-spec-files-dist', function () {
+    lint("/spec/**/*.js");
 });
 
 
