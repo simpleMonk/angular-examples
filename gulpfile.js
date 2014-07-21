@@ -22,7 +22,7 @@ gulp.task('watch', function () {
     gulp.watch([src.templates], ['copy-templates']);
     gulp.watch([src.index], ['copy-index-file']);
     gulp.watch([src.css], [ 'copy-less-css']);
-    gulp.watch([src.specs], ['lint-src-files', 'run-browserified-specs']);
+    gulp.watch([src.specs], ['lint-src-files', 'copy-browserified-specs']);
 
 });
 
@@ -44,7 +44,7 @@ gulp.task('prepare-dev', function (cb) {
 });
 
 gulp.task('prepare-dev-js', function () {
-    runSequence('copy-vendor-js', 'copy-browserified-src-files', 'run-browserified-specs');
+    runSequence('copy-vendor-js', 'copy-browserified-src-files', 'copy-browserified-specs');
 });
 
 gulp.task('prepare-dev-templates', ['copy-index-file', 'copy-templates']);
