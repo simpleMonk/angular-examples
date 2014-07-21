@@ -9,7 +9,8 @@ var config = require('./config.js'),
     mocha = require('gulp-mocha'),
     browserify = require('browserify'),
     source = require('vinyl-source-stream'),
-    multiGlob = require('multi-glob');
+    multiGlob = require('multi-glob'),
+    shell = require('gulp-shell');
 
 var vendorJsFiles = config.path.vendor.js,
     srcJsFiles = config.path.src.js,
@@ -82,16 +83,12 @@ gulp.task('copy-browserified-src-files', ['clean-dev-app-js', 'lint-src-files'],
     browserifyFiles(srcJsFiles, browserifyCallback);
 });
 
-gulp.task('run-browserified-specs', ['clean-dev-spec-js', 'lint-spec-files'], function () {
+gulp.task('copy-browserified-specs', ['clean-dev-spec-js', 'lint-spec-files'], function () {
     function browserifySpecCallback(files) {
         browserify({entries: files})
             .bundle()
             .pipe(source("spec.js"))
             .pipe(gulp.dest(developmentSpecJsPath))
-            .pipe(mocha({
-                reporter: 'spec',
-                ui: 'bdd'
-            }))
             .on('error', function (err) {
                 gutil.log('----------------------------');
                 gutil.log(err.message);
@@ -116,7 +113,7 @@ gulp.task('lint-src-files', function () {
     lint(srcJsFiles);
 });
 gulp.task('lint-spec-files', function () {
-    gulp.src('spec/**/*.js')
+    gulp.src('/spec/**/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
 });

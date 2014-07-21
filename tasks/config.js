@@ -9,7 +9,14 @@ var config = {
             fonts: "src/fonts",
             templates: [ "src/templates/**/*.html"],
             index: 'src/index.html',
-            specs: [ 'spec/**/*.js']
+            specs: [
+                "vendor/js/bower-angular-bundle/jquery-2.1.1.min.js",
+                'vendor/js/bower-angular-bundle/angular.min.js',
+                'vendor/js/bower-angular-bundle/angular-resource.min.js',
+                'vendor/js/bower-angular-bundle/angular-route.min.js',
+                'vendor/js/bower-angular-bundle/angular-mocks.js',
+                'src/js/**/*.js',
+                'spec/**/*.js']
         },
         vendor: {
             self: "vendor",
@@ -46,3 +53,4 @@ var config = {
 };
 
 module.exports = config;
+
