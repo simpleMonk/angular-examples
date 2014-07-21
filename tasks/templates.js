@@ -31,10 +31,11 @@ gulp.task("copy-index-file", ['remove-index-file'], function () {
 });
 
 
-gulp.task('clean-templates',function(){
-    clean(dev.templates);
+gulp.task('clean-templates', function () {
+    var templatesPath ="/" + dev.templates;
+    clean(templatesPath);
 });
 
-gulp.task('remove-index-file',function(){
+gulp.task('remove-index-file', function () {
     clean(dev.index);
 })
