@@ -12,6 +12,10 @@
         }
     },
     "launch_in_dev": [
+        "phantomjs",
+        "chrome"
+    ],
+    "launch_in_ci": [
         "phantomjs"
     ]
 }

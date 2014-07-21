@@ -53,6 +53,11 @@ gulp.task('build', function () {
     runSequence('clean-dist', ['build-js', 'build-css', 'build-templates'], 'run-dist-server');
 });
 
+gulp.task('build-dist', function () {
+    runSequence('clean-dist', ['build-js', 'build-css', 'build-templates']);
+});
+
+
 
 
 
