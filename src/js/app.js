@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute', 'todo']).run(function ($rootScope) {
+angular.module('app', ['ngResource', 'ngRoute', 'example']).run(function ($rootScope) {
     $rootScope.log = function (thing) {
         console.log(thing);
     };

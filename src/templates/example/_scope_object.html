@@ -1,0 +1,13 @@
+<div>error.message:{{error.message}}</div><input type="text" ng-model="error.message"/>
+<br>
+<div>error.level:{{error.level}}</div><input type="text" ng-model="error.level"/>
+<br/>
+<h3>ng-repeat</h3>
+<div ng-repeat="errMsg in errorMessages">
+    <div>errMsg.message:{{errMsg.message}}</div>
+    <input type="text" ng-model="errMsg.message"/>
+    <br>
+
+    <div>errMsg.level:{{errMsg.level}}</div>
+    <input type="text" ng-model="errMsg.level"/>
+</div>

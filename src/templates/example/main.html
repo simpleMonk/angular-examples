@@ -1,0 +1,34 @@
+<h3>Parent scope primitive</h3>
+<div>{{message}}!</div>
+<br>
+<h3>ng-repeat</h3>
+<div ng-repeat="msg in messages">
+    {{msg}}
+</div>
+<br>
+<h3>Child Scope: New</h3>
+<h4>Changing the value doesn't alter Parent scope message</h4>
+
+<div ng-include="'templates/example/_scope_value.html'"></div>
+<hr>
+<h3>Parent scope object</h3>
+<div>error.message:{{error.message}}</div>
+<div>error.level:{{error.level}}</div>
+<br/>
+<br/>
+<h3>ng-repeat</h3>
+<div ng-repeat="errMsg in errorMessages">
+    <div>errMsg.message:{{errMsg.message}}</div>
+    <input type="text" ng-model="errMsg.message"/>
+    <br>
+
+    <div>errMsg.level:{{errMsg.level}}</div>
+    <input type="text" ng-model="errMsg.level"/>
+</div>
+
+<h3>Child Scope: New</h3>
+<h4>Changing the value alters Parent scope error.message and level</h4>
+
+<div ng-include="'templates/example/_scope_object.html'"></div>
+
+
