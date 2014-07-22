@@ -30,9 +30,7 @@ gulp.task('copy-less-css', ['clean-stylesheet', 'lint-less-files'], function () 
 gulp.task('lint-less-files', function () {
     gulp.src(srcStyleSheetFiles)
         .pipe(recess())
-        .on('error', function (err) {
-            gutil.log(err.message);
-        });
+        .on('error',onError);
 });
 
 function onError(err) {
