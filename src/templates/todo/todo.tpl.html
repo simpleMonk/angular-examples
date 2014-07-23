@@ -1,1 +1,68 @@
+<h3>ParentController:TodoController:Message</h3>
 <div>{{message}}!</div>
+<div>
+    <h4>ng-repeat</h4>
+
+    <div ng-repeat="message in messages">
+        {{message.title}}||{{message.detail}}
+    </div>
+</div>
+<h4>Service Message</h4>
+<div>Object:{{todoService.serviceMessage}}</div>| <input type="text" ng-model="todoService.serviceMessage"/>
+<div>Primitive:{{todoServiceMessage.serviceMessage}}</div>| <input type="text"
+                                                                   ng-model="todoServiceMessage.serviceMessage"/>
+
+
+<div ng-controller="TodoChildController">
+    <h3>ChildController:TodoChildController:Message</h3>
+
+    <div>{{message}}!</div>
+    <input type="text" ng-model="message"/>
+
+    <div>
+        <h4>ng-repeat</h4>
+
+        <div ng-repeat="message in messages">
+            {{message.title}}|| <input ng-model="message.title" type="text"/>
+            <br>
+            {{message.detail}}|| <input ng-model="message.detail" type="text"/>
+        </div>
+    </div>
+
+    <h4>Service Message</h4>
+
+    <div>Object:{{todoService.serviceMessage}}</div>
+    | <input type="text" ng-model="todoService.serviceMessage"/>
+
+    <div>Primitive:{{todoServiceMessage.serviceMessage}}</div>
+    | <input type="text" ng-model="todoServiceMessage.serviceMessage"/>
+
+
+</div>
+<hr>
+<h4>Another instance of TodoChildController:Basically new TodoChildController()</h4>
+<div ng-controller="TodoChildController">
+    <h3>ChildController:TodoChildController:Message</h3>
+
+    <div>{{message}}!</div>
+    <input type="text" ng-model="message"/>
+
+    <div>
+        <h4>ng-repeat</h4>
+
+        <div ng-repeat="message in messages">
+            {{message.title}}|| <input ng-model="message.title" type="text"/>
+            <br>
+            {{message.detail}}|| <input ng-model="message.detail" type="text"/>
+        </div>
+    </div>
+
+    <h4>Service Message-Another</h4>
+
+    <div>Object:{{todoServiceAnother.serviceMessage}}</div>
+    | <input type="text" ng-model="todoServiceAnother.serviceMessage"/>
+
+    <div>Primitive:{{todoServiceMessageAnother}}</div>
+    | <input type="text" ng-model="todoServiceMessageAnother"/>
+
+</div>
