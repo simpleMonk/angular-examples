@@ -8,15 +8,11 @@ var config = {
             images: "src/images",
             fonts: "src/fonts",
             templates: [ "src/templates/**/*.html"],
-            index: 'src/index.html',
+            index: "src/index.html",
             specs: [
-                "vendor/js/bower-angular-bundle/jquery-2.1.1.min.js",
-                'vendor/js/bower-angular-bundle/angular.min.js',
-                'vendor/js/bower-angular-bundle/angular-resource.min.js',
-                'vendor/js/bower-angular-bundle/angular-route.min.js',
-                'vendor/js/bower-angular-bundle/angular-mocks.js',
-                'src/js/**/*.js',
-                'spec/**/*.js']
+                "src/js/**/*.js",
+                "spec/**/*.js"]
+
         },
         vendor: {
             self: "vendor",
@@ -36,8 +32,8 @@ var config = {
             images: "development/images",
             fonts: "development/fonts",
             templates: "development/templates",
-            index: 'development/index.html',
-            spec: 'development/spec'
+            index: "development/index.html",
+            spec: "development/spec"
         },
         dist: {
             self: "dist",
@@ -46,8 +42,8 @@ var config = {
             images: "dist/images",
             fonts: "dist/fonts",
             templates: "dist/templates",
-            index: 'dist/index.html',
-            spec: 'dist/spec'
+            index: "dist/index.html",
+            spec: "dist/spec"
         }
     }
 };
