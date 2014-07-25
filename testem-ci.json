@@ -1,15 +1,23 @@
 {
-    "framework": "mocha",
+    "framework": "mocha+chai",
     "src_files": [
-        "node_modules/chai/chai.js",
-        "spec/config/setup.js",
+        "vendor/js/bower-angular-bundle/jquery-2.1.1.min.js",
+        "vendor/js/bower-angular-bundle/angular.min.js",
+        "vendor/js/bower-angular-bundle/angular-resource.min.js",
+        "vendor/js/bower-angular-bundle/angular-route.min.js",
+        "vendor/js/bower-angular-bundle/angular-route.min.js",
+        "vendor/js/bower-angular-bundle/angular-mocks.js",
+        "vendor/js/bower-angular-bundle/lodash.min.js",
         "dist/spec/spec.js"
     ],
     "launchers": {
-
+        "node": {
+            "command": "./node_modules/.bin/mocha -r spec/config/setup.js -R tap development/spec/*.js",
+            "protocol": "tap"
+        }
     },
+
     "launch_in_ci": [
         "phantomjs"
     ]
-
 }
