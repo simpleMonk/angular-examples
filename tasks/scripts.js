@@ -45,7 +45,7 @@ gulp.task('copy-browserified-src-files', ['clean-dev-app-js', 'lint-src-files'],
 gulp.task('copy-browserified-specs', ['clean-dev-spec-js', 'lint-spec-files'], function () {
     function browserifySpecCallback(files) {
         browserify({entries: files})
-            .bundle()
+            .bundle({ debug: true })
             .pipe(source("spec.js"))
             .pipe(gulp.dest(developmentSpecJsPath))
             .on('error', onError);
