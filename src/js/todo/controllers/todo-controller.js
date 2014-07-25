@@ -1,4 +1,4 @@
-function todoController($scope, todoService) {
+function TodoController($scope, todoService) {
     $scope.message = "testem message";
     $scope.messages = [
         {title: 'default', detail: 'detailed message'},
@@ -6,7 +6,6 @@ function todoController($scope, todoService) {
     ];
     $scope.todoService = todoService;
     $scope.todoServiceMessage = todoService;
-
 }
 
-module.exports = todoController;
+module.exports = TodoController;

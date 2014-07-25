@@ -1,4 +1,4 @@
-function todoChildController($scope, todoService) {
+function TodoChildController($scope, todoService) {
     /*
      Commenting out the below code should work because
      message and messages are in todoController(parent) and
@@ -33,4 +33,4 @@ function todoChildController($scope, todoService) {
 }
 
 
-module.exports = todoChildController;
+module.exports = TodoChildController;

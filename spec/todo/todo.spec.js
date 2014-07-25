@@ -1,3 +1,6 @@
+var angular = require('angular');
+
+
 describe("module:todo", function () {
 
     var rootScope, scope, childScope, todoController, todoChildController, todoService;
@@ -7,6 +10,7 @@ describe("module:todo", function () {
         var todo = angular.mock.module('todo');
         done();
     });
+
     beforeEach(inject(function ($rootScope, $controller, $injector) {
         rootScope = $rootScope;
         scope = $rootScope.$new();
@@ -47,5 +51,6 @@ describe("module:todo", function () {
     });
 
 });
+
 
 
