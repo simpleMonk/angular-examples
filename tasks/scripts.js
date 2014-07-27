@@ -14,7 +14,8 @@ var vendorJsFiles = config.path.vendor.js,
     srcJsFiles = config.path.src.js,
     developmentJsPath = config.path.development.js,
     srcSpecJsFiles = config.path.src.specs,
-    developmentSpecJsPath = config.path.development.spec;
+    developmentSpecJsPath = config.path.development.spec,
+    specFilesOnly = config.path.spec;
 
 gulp.task('copy-vendor-js', ['clean-dev-vendor-js'], function () {
     gulp.src(vendorJsFiles)
@@ -71,21 +72,14 @@ gulp.task('lint-src-files', function () {
 });
 
 gulp.task('lint-spec-files', function () {
-    gulp.src('/spec/**/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'));
+    lint(specFilesOnly);
 });
 
 function browserifyFiles(srcGlob, browserifyCallback) {
     multiGlob.glob(srcGlob, function (err, files) {
-        files = files.map(prefixFileName);
         browserifyCallback(files);
     });
 };
-
-function prefixFileName(fileName) {
-    return "./" + fileName;
-}
 
 function lint(files) {
     gulp.src(files)

@@ -2,7 +2,7 @@ var config = require('./config.js'),
     gulp = require('gulp'),
     rimraf = require('gulp-rimraf'),
     gutil = require('gulp-util')
-    del = require('del');
+del = require('del');
 
 function clean(globFolder) {
     gulp.src(globFolder)
@@ -12,6 +12,6 @@ function clean(globFolder) {
         });
 };
 
-exports.clean= clean;
+exports.clean = clean;
 
 

@@ -27,7 +27,8 @@ var srcJsFiles = config.path.src.js,
     distStyleSheetPath = config.path.dist.css,
     distTemplatesPath = config.path.dist.templates,
     distIndexFilePath = config.path.dist.self,
-    distSpecPath = config.path.dist.spec;
+    distSpecPath = config.path.dist.spec,
+    specFilesOnly = config.path.spec;
 
 gulp.task('build-js', ['build-vendor-js', 'build-src-js', 'copy-specs-dist']);
 
@@ -115,7 +116,7 @@ gulp.task('run-dist-server', function () {
 });
 
 gulp.task('lint-spec-files-dist', function () {
-    lint("spec/**/*.js");
+    lint(specFilesOnly);
 });
 
 gulp.task('lint-src-files-dist', function () {
@@ -134,14 +135,10 @@ gulp.task('lint-src-files-dist', function () {
 
 function browserifyFiles(srcGlob, browserifyCallback) {
     multiGlob.glob(srcGlob, function (err, files) {
-        files = files.map(prefixFileName);
         browserifyCallback(files);
     });
 };
 
-function prefixFileName(fileName) {
-    return "./" + fileName;
-}
 
 function lint(files) {
     gulp.src(files)

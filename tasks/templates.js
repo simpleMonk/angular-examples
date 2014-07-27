@@ -30,7 +30,7 @@ gulp.task("copy-index-file", ['remove-index-file'], function () {
 });
 
 gulp.task('clean-templates', function () {
-    clean("./development/templates/*");
+    clean(dev.templates + "**/*");
 });
 
 gulp.task('remove-index-file', function () {
