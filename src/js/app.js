@@ -1,3 +1,5 @@
+var angular = require('angular');
+
 angular.module('app', ['ngResource', 'ngRoute', 'example']).run(function ($rootScope) {
     $rootScope.log = function (thing) {
         console.log(thing);

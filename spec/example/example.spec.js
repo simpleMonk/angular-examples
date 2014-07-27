@@ -1,3 +1,5 @@
+var angular = require('angular');
+
 describe("module:example:understanding scopes", function () {
 
     var rootScope, scope, exampleController;
