@@ -1,3 +1,5 @@
+var angular = require('angular');
+
 describe("module:todo", function () {
 
     var rootScope, scope, todoController;
