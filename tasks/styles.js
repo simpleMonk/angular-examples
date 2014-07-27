@@ -12,7 +12,7 @@ var srcStyleSheetFiles = config.path.src.css,
     devStyleSheetPath = config.path.development.css;
 
 gulp.task('clean-stylesheet', function () {
-    clean(devStyleSheetPath + "/*");
+    clean(devStyleSheetPath + "/**/*");
 });
 
 gulp.task('copy-less-css', ['clean-stylesheet', 'lint-less-files'], function () {
@@ -30,7 +30,7 @@ gulp.task('copy-less-css', ['clean-stylesheet', 'lint-less-files'], function () 
 gulp.task('lint-less-files', function () {
     gulp.src(srcStyleSheetFiles)
         .pipe(recess())
-        .on('error',onError);
+        .on('error', onError);
 });
 
 function onError(err) {
