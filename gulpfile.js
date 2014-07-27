@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     config = require('./tasks/config.js'),
     clean = require('./tasks/util.js').clean,
+    watcher = require('./tasks/watcher.js'),
     runSequence = require('run-sequence'),
     watch = require('gulp-watch');
 
@@ -18,11 +19,21 @@ gulp.task('default', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch([src.js, vendor.js], ['prepare-dev-js']);
-    gulp.watch(src.templates, ['prepare-templates']);
-    gulp.watch(src.index, ['copy-index-file']);
-    gulp.watch(src.css, [ 'copy-less-css']);
-    gulp.watch(src.specs, ['lint-src-files', 'copy-browserified-specs']);
+    watcher(['src/js', 'vendor/js'], function () {
+        gulp.start('prepare-dev-js');
+    });
+    watcher('src/templates', function () {
+        gulp.start('prepare-templates')
+    });
+    watcher('src/index.html', function () {
+        gulp.start(['copy-index-file']);
+    });
+    watcher('src/css', function () {
+        gulp.start([ 'copy-less-css']);
+    });
+    watcher('spec', function () {
+        gulp.start(['lint-src-files', 'copy-browserified-specs']);
+    });
 });
 
 gulp.task('clean-dev', function () {
