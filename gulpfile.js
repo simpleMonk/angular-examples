@@ -10,8 +10,8 @@ require('./tasks/scripts.js');
 require('./tasks/styles.js');
 require('./tasks/dist.js');
 
-var src = config.path.src;
-var vendor = config.path.vendor;
+var src = config.path.src,
+    vendor = config.path.vendor;
 
 gulp.task('default', function () {
     runSequence('prepare-dev', 'watch', 'run-dev-server');
@@ -19,10 +19,10 @@ gulp.task('default', function () {
 
 gulp.task('watch', function () {
     gulp.watch([src.js, vendor.js], ['prepare-dev-js']);
-    gulp.watch([src.templates], ['copy-templates']);
-    gulp.watch([src.index], ['copy-index-file']);
-    gulp.watch([src.css], [ 'copy-less-css']);
-    gulp.watch([src.specs], ['lint-src-files', 'copy-browserified-specs']);
+    gulp.watch(src.templates, ['prepare-templates']);
+    gulp.watch(src.index, ['copy-index-file']);
+    gulp.watch(src.css, [ 'copy-less-css']);
+    gulp.watch(src.specs, ['lint-src-files', 'copy-browserified-specs']);
 });
 
 gulp.task('clean-dev', function () {
@@ -45,7 +45,7 @@ gulp.task('prepare-dev-js', function () {
     runSequence('copy-vendor-js', 'copy-browserified-src-files', 'copy-browserified-specs');
 });
 
-gulp.task('prepare-dev-templates', ['copy-index-file', 'copy-templates']);
+gulp.task('prepare-dev-templates', ['copy-index-file', 'prepare-templates']);
 
 gulp.task('build', function () {
     runSequence('clean-dist', ['build-js', 'build-css', 'build-templates'], 'run-dist-server');
@@ -54,10 +54,3 @@ gulp.task('build', function () {
 gulp.task('build-dist', function () {
     runSequence('clean-dist', ['build-js', 'build-css', 'build-templates']);
 });
-
-
-
-
-
-
-
