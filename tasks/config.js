@@ -7,7 +7,7 @@ var config = {
             css: "src/css/**/*.less",
             images: "src/images",
             fonts: "src/fonts",
-            templates: [ "src/templates/**/*.html"],
+            templates: "./src/templates/**/*.html",
             index: "src/index.html",
             specs: [
                 "src/js/**/*.js",
