@@ -31,7 +31,7 @@ var config = {
             css: "./development/css",
             images: "./development/images",
             fonts: "./development/fonts",
-            templates: "./development/templates/",
+            templates: "./development/templates",
             index: "./development/index.html",
             spec: "./development/spec"
         },

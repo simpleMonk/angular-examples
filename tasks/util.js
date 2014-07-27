@@ -6,7 +6,7 @@ del = require('del');
 
 function clean(globFolder) {
     gulp.src(globFolder)
-        .pipe(rimraf({force: true}))
+        .pipe(rimraf())
         .on('error', function (err) {
             gutil.log(err);
         });
