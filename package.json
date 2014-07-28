@@ -60,6 +60,7 @@
     "gulp-watch": "^0.6.8",
     "istanbul": "^0.3.0",
     "istanbulify": "^0.1.0",
+    "jshint": "^2.5.2",
     "jshint-stylish": "^0.4.0",
     "lodash": "^2.4.1",
     "mocha": "^1.20.1",
