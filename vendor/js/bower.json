@@ -1,0 +1,22 @@
+{
+  "name": "angular-examples",
+  "version": "0.0.0",
+  "homepage": "https://github.com/simpleMonk/angular-examples",
+  "authors": [
+    "SimpleMonk <simplemonk08@gmail.com>"
+  ],
+  "description": "angular playground",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    ".",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bower-angular-bundle": "simplemonk/bower-angular-bundle#~0.0.2"
+  }
+}
