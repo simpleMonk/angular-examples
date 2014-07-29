@@ -54,12 +54,21 @@ describe.only('Directive:calculatorDirective', function () {
         expect(elem.isolateScope().number3).to.equal(elem.scope().number2);
     });
 
+    it('should have calculateFn defined ', function () {
+        compileCalculatorDirective();
+        expect(elem.isolateScope().calculate).to.exist;
+        expect(elem.isolateScope().calculate()).to.eql(scope.calculateFn());
+    });
+
 
     function compileCalculatorDirective() {
-        elem = angular.element('<div calci id="id1" number1="number1" number3="number2"></div>');
+        elem = angular.element('<div calci id="id1" number1="number1" number3="number2" calculate="calculateFn()"></div>');
         //we can pass initial values
         scope.number1 = 4;
         scope.number2 = 4;
+        scope.calculateFn=function(){
+            return 1;
+        };
         compile(elem)(scope);
         scope.$digest();
     }
