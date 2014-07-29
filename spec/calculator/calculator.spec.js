@@ -33,11 +33,11 @@ describe("Module:Calculator", function () {
 
         scope.number1 = 2;
         scope.number2 = 2;
-        expect(scope.add()).to.equal(4);
+        expect(scope.add(scope.number1, scope.number2)).to.equal(4);
 
         scope.number1 = 3;
         scope.number2 = 2;
-        expect(scope.add()).to.equal(5);
+        expect(scope.add(scope.number1, scope.number2)).to.equal(5);
     });
 
     it("should subtract 2 numbers", function () {
@@ -45,15 +45,15 @@ describe("Module:Calculator", function () {
 
         scope.number1 = 2;
         scope.number2 = 2;
-        expect(scope.subtract()).to.equal(0);
+        expect(scope.subtract(scope.number1, scope.number2)).to.equal(0);
 
         scope.number1 = 3;
         scope.number2 = 2;
-        expect(scope.subtract()).to.equal(1);
+        expect(scope.subtract(scope.number1, scope.number2)).to.equal(1);
 
         scope.number1 = 2;
         scope.number2 = 3;
-        expect(scope.subtract()).to.equal(-1);
+        expect(scope.subtract(scope.number1, scope.number2)).to.equal(-1);
     });
 
 });

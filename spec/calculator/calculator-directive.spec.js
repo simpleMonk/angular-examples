@@ -3,7 +3,7 @@
 var angular = require('angular');
 var expect = require('chai').expect;
 
-describe.only('Directive:calculatorDirective', function () {
+describe('Directive:calculatorDirective', function () {
 
     var elem, rootScope, compile, scope, httpBackend;
 
@@ -60,14 +60,28 @@ describe.only('Directive:calculatorDirective', function () {
         expect(elem.isolateScope().calculate()).to.eql(scope.calculateFn());
     });
 
+    it('should have calculateFn to add 2 valid inputs ', function () {
+        compileCalculatorDirective();
+        expect(elem.isolateScope().calculate({num1: 2, num2: 2})).to.eql(4);
+    });
+
+    it('should have calculateFn to subtract 2 valid inputs ', function () {
+        compileCalculatorDirective();
+        scope.calculateFn = function (num1, num2) {
+            return num1 - num2;
+        };
+        scope.$apply();
+        expect(elem.isolateScope().calculate({num1: 4, num2: 2})).to.eql(2);
+    });
+
 
     function compileCalculatorDirective() {
-        elem = angular.element('<div calci id="id1" number1="number1" number3="number2" calculate="calculateFn()"></div>');
+        elem = angular.element('<div calci id="id1" number1="number1" number3="number2" calculate="calculateFn(num1,num2)"></div>');
         //we can pass initial values
         scope.number1 = 4;
         scope.number2 = 4;
-        scope.calculateFn=function(){
-            return 1;
+        scope.calculateFn = function (num1, num2) {
+            return num1 + num2;
         };
         compile(elem)(scope);
         scope.$digest();
