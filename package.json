@@ -68,6 +68,7 @@
     "phantomjs": "^1.9.7-14",
     "rimraf": "^2.2.8",
     "run-sequence": "^0.3.6",
+    "sinon": "^1.10.3",
     "streamqueue": "^0.1.1",
     "testem": "^0.6.17",
     "vinyl-source-stream": "^0.1.1"
