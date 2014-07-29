@@ -1,5 +1,6 @@
 "use strict";
 
+
 function CalculatorController($scope) {
     $scope.number1 = 0;
     $scope.number2 = 0;
