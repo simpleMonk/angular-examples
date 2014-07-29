@@ -10,5 +10,10 @@ angular.module("app").config(function ($routeProvider, $locationProvider) {
         controller: 'CalculatorController'
     });
 
+    $routeProvider.when('/greetings', {
+        templateUrl: 'templates/greetings/greetings.html',
+        controller: 'GreetingsController'
+    });
+
     $routeProvider.otherwise({ redirectTo: '/' });
 });

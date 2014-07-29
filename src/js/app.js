@@ -2,7 +2,7 @@
 
 var angular = require('angular');
 
-angular.module('app', ['ngResource', 'ngRoute', 'calculator']).run(function ($rootScope) {
+angular.module('app', ['ngResource', 'ngRoute', 'calculator','greetings']).run(function ($rootScope) {
     $rootScope.log = function (thing) {
         console.log(thing);
     };

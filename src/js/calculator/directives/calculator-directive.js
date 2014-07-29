@@ -23,5 +23,4 @@ var calculatorDirective = function () {
     };
 };
 
-
 module.exports = calculatorDirective;

@@ -56,4 +56,5 @@ describe("Module:Calculator", function () {
         expect(scope.subtract(scope.number1, scope.number2)).to.equal(-1);
     });
 
+
 });
