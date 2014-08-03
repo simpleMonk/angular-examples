@@ -1,1 +1,32 @@
-<div>{{message}}!</div>
+<b>TodoController</b>
+<div ng-controller="TodoController">
+
+    <input type="text" ng-model="todo.title"/>
+
+    <div>todoTitle:{{todo.title}}</div>
+
+    <br>
+    <br>
+    using factory
+    <br>
+    <input type="text" ng-model="title" ng-change="changeTodoTitle()"/>
+
+    <div>todoFactoryTitle:{{toodoo.get()}}</div>
+
+
+</div>
+
+<hr>
+<b>TodoAnotherController</b>
+<div ng-controller="TodoAnotherController">
+    <input type="text" ng-model="todoTitle.title"/>
+
+    <div>todoTitle:{{todoTitle.title}}</div>
+    <br>
+    <br>
+    using factory
+    <br>
+
+    <div>todoFactoryTitle:{{toodoo.get()}}</div>
+
+</div>

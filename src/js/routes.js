@@ -1,11 +1,12 @@
+"use strict";
+
 var angular = require('angular');
 
-angular.module("app").config(function($routeProvider, $locationProvider) {
+angular.module("app").config(function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(false);
 
     $routeProvider.when('/todo', {
-        templateUrl: 'templates/todo/todo.tpl.html',
-        controller:"TodoController"
+        templateUrl: 'templates/todo/todo.tpl.html'
     });
 
     $routeProvider.otherwise({ redirectTo: '/' });

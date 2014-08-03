@@ -1,4 +1,7 @@
+"use strict";
+
 var angular = require('angular');
+var expect = require('chai').expect;
 
 describe("module:todo", function () {
 
