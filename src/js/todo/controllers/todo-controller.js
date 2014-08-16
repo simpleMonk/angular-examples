@@ -1,3 +1,5 @@
+"use strict";
+
 function todoController($scope) {
     $scope.message = "testem message";
 }

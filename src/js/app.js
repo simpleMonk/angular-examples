@@ -1,3 +1,5 @@
+"use strict";
+
 var angular = require('angular');
 
 angular.module('app', ['ngResource', 'ngRoute', 'todo']).run(function ($rootScope) {
@@ -5,8 +7,5 @@ angular.module('app', ['ngResource', 'ngRoute', 'todo']).run(function ($rootScop
         console.log(thing);
     };
 
-    $rootScope.alert = function (thing) {
-        alert(thing);
-    };
 });
 

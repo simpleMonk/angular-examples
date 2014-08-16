@@ -1,3 +1,5 @@
+"use strict";
+
 var angular = require('angular'),
     todoController = require('./controllers/todo-controller.js');
 
